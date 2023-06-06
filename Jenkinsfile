@@ -1,21 +1,19 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
     agent any
-
     stages {
         stage('Build') {
-            steps {
-                echo 'Building..'
+            agent {
+                docker {
+                    image 'python:3.10.7-alpine'
+                    // Run the container on the node specified at the
+                    // top-level of the Pipeline, in the same workspace,
+                    // rather than on a new node entirely:
+                    reuseNode true
+                }
             }
-        }
-        stage('Test') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                sh 'python --version'
             }
         }
     }
