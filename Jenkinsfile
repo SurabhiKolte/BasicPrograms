@@ -6,11 +6,12 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+				
 				checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/SurabhiKolte/BasicPrograms.git']])
 
-				docker build -t hello_world .
+				/* docker build -t hello_world . */
 				
-				docker run hello_world
+				/* docker run hello_world */
 				
             }
         }
