@@ -8,7 +8,10 @@ pipeline {
                 echo 'Building..'
 				checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/SurabhiKolte/BasicPrograms.git']])
 
-				bat 'python hello.py'				
+				docker build -t hello_world .
+				
+				docker run hello_world
+				
             }
         }
         stage('Test') {
