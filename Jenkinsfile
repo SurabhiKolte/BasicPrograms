@@ -11,7 +11,7 @@ pipeline {
 
 				bat 'docker build -t hello_world .'
 
-				bat docker run hello_world
+				bat 'docker run hello_world'
 
             }
         }
