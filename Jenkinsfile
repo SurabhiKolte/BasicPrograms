@@ -9,10 +9,13 @@ pipeline {
 				
 				checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/SurabhiKolte/BasicPrograms.git']])
 
-				/* docker build -t hello_world . */
+				sh """
+				docker build -t hello_world .
+				"""
 				
-				/* docker run hello_world */
-				
+				sh """
+				docker run hello_world
+				"""
             }
         }
         stage('Test') {
